@@ -7,16 +7,22 @@
         <list>
           <option value="service" />
           <option value="service" />
+          <option value="service" />
+          <option value="service" />
         </list>
       </option>
       <option name="ignoredPackages">
         <list>
           <option value="mysql:mysql-connector-java:5.1.47" />
           <option value="com.alibaba:fastjson:1.2.66" />
+          <option value="cn.hutool:hutool-all:5.8.20" />
+          <option value="org.apache.httpcomponents:httpclient:4.4.1" />
         </list>
       </option>
       <option name="ignoredReasons">
         <list>
+          <option value="Not exploitable" />
+          <option value="Not exploitable" />
           <option value="Not exploitable" />
           <option value="Not exploitable" />
         </list>
