@@ -1,0 +1,49 @@
+server:
+  port: 8080
+spring:
+  profiles:
+    active: default
+  application:
+    name: go-shopping
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/go_shopping?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: cfwrettt.com
+  data:
+   redis:
+     host: localhost
+     port: 6379
+     lettuce:
+       pool:
+         max-active: 10
+         max-idle: 10
+         min-idle: 1
+         time-between-eviction-runs: 10s
+  jackson:
+    default-property-inclusion: non_null
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+     map-underscore-to-camelcase: true
+     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+logging:
+  level:
+    com:
+      goShopping:
+        mapper: debug
+        service: debug
+        controller: debug
+com:
+  shopping:
+    jwt:
+      secret-key: litianci0223799
+      ttl: 3600000
+      token-name: token
+    code:
+      expire-time: 60
+      width: 180
+      height: 30
+      length: 6
+    password:
+      key: litianciskeyslit
