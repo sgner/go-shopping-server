@@ -10,12 +10,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class LongTermEventBookHeadItemVO {
+        private String id;
         private String image;
         private String describe;
         private Double price;
         private Double originalPrice;
         private String detail;
-        private int discount;
+        private Double discount;
         private Double rate;
         private int comment;
 }

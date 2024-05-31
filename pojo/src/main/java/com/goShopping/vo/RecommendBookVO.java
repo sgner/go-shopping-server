@@ -6,14 +6,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class LongTermEventBookBodyItemVO {
+public class RecommendBookVO {
     private String id;
-    private String image;
     private String describe;
+    private String image;
+    private String discount;
     private Double originalPrice;
     private Double price;
-    private Double discount;
 }

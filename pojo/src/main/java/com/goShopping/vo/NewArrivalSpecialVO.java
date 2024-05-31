@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.ArrayList;
 @Data
 @Builder
-public class newArrivalSpecialVO {
+public class NewArrivalSpecialVO {
           private LongTermEventBookHeadItemVO head;
           private ArrayList<LongTermEventBookBodyItemVO> body;
 }

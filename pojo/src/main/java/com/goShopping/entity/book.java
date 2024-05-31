@@ -14,9 +14,9 @@ public class book {
       private String name;
       private String author;
       private String publisher;
-      private int price;
+      private Double price;
       private String image;
-      private int originalPrice;
+      private Double originalPrice;
       private String detail;
       private String category;
       private String describe;
@@ -24,5 +24,7 @@ public class book {
       private int comment;
       private int format;
       private int pages;
-      private int discount;
+      private Double discount;
+      private int event;
+      private boolean status;
 }
