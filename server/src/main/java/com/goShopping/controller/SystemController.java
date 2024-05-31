@@ -4,6 +4,7 @@ import com.goShopping.result.Result;
 import com.goShopping.service.SystemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,5 +16,9 @@ public class SystemController {
     @GetMapping("/recommend")
     public Result recommend(){
         return systemService.recommend();
+    }
+    @GetMapping("/book/detail/{id}")
+    public Result bookDetail(@PathVariable int id){
+         return systemService.getBookDetail(id);
     }
 }
