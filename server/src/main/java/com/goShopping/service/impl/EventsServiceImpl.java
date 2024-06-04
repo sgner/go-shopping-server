@@ -20,6 +20,9 @@ public class EventsServiceImpl implements EventsService {
     @Override
     public Result longTermEvent(int eventId) {
         ArrayList<LongTermEventBookHeadItemVO> longTermEventBookHeadItem = eventsMapper.longTermEvent(eventId);
+        if(longTermEventBookHeadItem.isEmpty()){
+            return Result.error("没有书籍，请联系管理员");
+        }
         ArrayList<LongTermEventBookBodyItemVO> list = new ArrayList<>();
         for(int i=1;i<longTermEventBookHeadItem.size();i++){
             LongTermEventBookBodyItemVO longTermEventBookBodyItem = new LongTermEventBookBodyItemVO();

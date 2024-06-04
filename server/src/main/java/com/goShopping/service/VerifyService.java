@@ -7,6 +7,6 @@ import jakarta.servlet.http.HttpServletRequest;
 public interface VerifyService {
     public Code getCode();
     public void storageCodeInSession(HttpServletRequest httpServletRequest,Code code);
-    public void storageCodeInRedis(Code code);
-    public StorageCode getCodeFromRedis();
+    public void storageCodeInRedis(Code code,String temporaryId);
+    public StorageCode getCodeFromRedis(String temporaryId);
 }

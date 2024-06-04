@@ -1,9 +1,9 @@
-//import com.goShopping.properties.AesEncryptionProperties;
-//import com.goShopping.utils.AesEncryptionUtils;
-//import org.junit.jupiter.api.Test;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.boot.test.context.SpringBootTest;
-//
-//@SpringBootTest
-//public class test {
-//\
+import cn.hutool.core.util.RandomUtil;
+
+import java.util.UUID;
+
+public class test {
+    public static void main(String[] args) {
+        System.out.println(String.valueOf(UUID.randomUUID()));
+    }
+}

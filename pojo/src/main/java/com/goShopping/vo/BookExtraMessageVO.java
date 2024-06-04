@@ -8,6 +8,6 @@ import java.util.ArrayList;
 @Data
 @Builder
 public class BookExtraMessageVO {
-     private String title;
-     private ArrayList<ContentVO> content;
+    private CopyrightVO copyright;
+    private ArrayList<BookOtherMessageVO> otherMessage;
 }

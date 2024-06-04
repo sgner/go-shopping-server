@@ -10,7 +10,7 @@ public class CopyrightVO {
     private String ISBN;
     private String barcode;
     private String binding;
-    private String numberOfVolumes;
-    private String weight;
-    private ArrayList<String> category;
+    private String category;
+    private Integer numberOfVolumes;
+    private Integer weight;
 }

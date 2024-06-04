@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class SystemController {
     @Autowired
     SystemService systemService;
-    @GetMapping("/recommend")
-    public Result recommend(){
-        return systemService.recommend();
+    @GetMapping("/recommend/{pageNum}")
+    public Result recommend(@PathVariable int pageNum){
+        return systemService.recommend(pageNum);
     }
     @GetMapping("/book/detail/{id}")
     public Result bookDetail(@PathVariable int id){

@@ -10,4 +10,5 @@ import lombok.Data;
 public class VerifyVO {
     private String code;
     private byte[] image;
+    private String temporaryId;
 }

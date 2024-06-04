@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class LongTermEventBookHeadItemVO {
-        private String id;
+        private Integer id;
         private String image;
         private String describe;
         private Double price;

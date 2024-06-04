@@ -5,15 +5,19 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class LongTermEventBookBodyItemVO {
-    private Integer id;
+public class SearchBookResultVO {
     private String image;
-    private String describe;
-    private Double originalPrice;
+    private String name;
+    private String author;
+    private LocalDate publishedDate;
+    private String publisher;
     private Double price;
     private Double discount;
+    private Double originalPrice;
+    private String detail;
 }

@@ -6,7 +6,7 @@ spring:
   application:
     name: go-shopping
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/go_shopping?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: cfwrettt.com
@@ -42,8 +42,9 @@ com:
       token-name: token
     code:
       expire-time: 60
-      width: 180
-      height: 30
+      width: 140
+      height: 50
       length: 6
     password:
       key: litianciskeyslit
+    page-size: 15

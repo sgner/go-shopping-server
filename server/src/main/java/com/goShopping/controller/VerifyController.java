@@ -7,15 +7,13 @@ import com.goShopping.vo.VerifyVO;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.imageio.ImageIO;
 import java.awt.image.RenderedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/verify")
@@ -25,11 +23,18 @@ public class VerifyController {
     VerifyService verifyService;
     @GetMapping()
     @ResponseBody
-    public Result getVerify(){
+    public Result getVerify(@RequestParam("temporaryId") String temporaryId){
         log.info("请求创建验证码");
         Code code = verifyService.getCode();
         log.info("验证码：{}",code.getCode());
-        verifyService.storageCodeInRedis(code);
+        if(temporaryId.isEmpty()){
+            temporaryId = String.valueOf(UUID.randomUUID());
+            log.info("生成临时id：{}",temporaryId);
+        }else{
+            log.info("临时id(已生成)：{}",temporaryId);
+        }
+
+        verifyService.storageCodeInRedis(code,temporaryId);
         String imgCode = code.getCode();
         byte[] imageBytes = new byte[0];
         try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
@@ -39,7 +44,7 @@ public class VerifyController {
         } catch (IOException e) {
             System.out.println(e.fillInStackTrace());
         }
-        VerifyVO verifyVO = VerifyVO.builder().image(imageBytes).code(imgCode).build();
+        VerifyVO verifyVO = VerifyVO.builder().image(imageBytes).code(imgCode).temporaryId(temporaryId).build();
         return Result.success(verifyVO);
     }
 

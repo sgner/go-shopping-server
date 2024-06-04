@@ -14,7 +14,7 @@ public class EventsController {
     @Autowired
     EventsService eventsService;
     @GetMapping("/long-term/{eventId}")
-    public Result longTermEvent(@PathVariable("eventId") int eventId){
+    public Result longTerTemEvent(@PathVariable("eventId") int eventId){
         return eventsService.longTermEvent(eventId);
     }
 }

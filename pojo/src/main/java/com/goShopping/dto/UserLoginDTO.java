@@ -21,6 +21,8 @@ public class UserLoginDTO {
     private boolean isAuto;
     @NotNull
     private boolean isRemember;
-
+    @NotNull
+    private String temporaryId;
+    @NotNull
     private String code;
 }
