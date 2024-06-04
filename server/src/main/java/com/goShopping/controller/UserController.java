@@ -69,4 +69,8 @@ public class UserController  {
       public Result search(@RequestParam String message, @PathVariable Integer mode,@PathVariable Integer pageNum){
              return userService.search(message,mode,pageNum);
       }
+      @GetMapping("/search/{mode}/{basis}/{sort}/{pageNum}")
+      public Result search(@RequestParam String message,@PathVariable Integer mode, @PathVariable Integer basis,@PathVariable Integer sort,@PathVariable Integer pageNum){
+            return userService.searchSort(message,mode,basis,sort,pageNum);
+      }
 }

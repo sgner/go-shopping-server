@@ -128,4 +128,18 @@ public class UserServiceImpl implements UserService {
              }
              return Result.success(PageSearchResult.builder().books(result.getResult()).total(result.getTotal()).build());
     }
+
+    @Override
+    public Result searchSort(String message, Integer mode, Integer basis, Integer sort, Integer pageNum) {
+        PageHelper.startPage(pageNum,pageProperties.getPageSize());
+        Page<SearchBookResultVO> result = null;
+        if(mode == 1){
+            result = (Page<SearchBookResultVO>)systemMapper.searchBookByAuthorSort(message,basis,sort);
+        }else if(mode == 2){
+            result  =
+        }else{
+            result =
+        }
+        return Result.success();
+    }
 }

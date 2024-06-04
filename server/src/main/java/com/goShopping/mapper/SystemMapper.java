@@ -28,4 +28,6 @@ public interface SystemMapper {
     List<SearchBookResultVO> searchBookByAuthor(String message);
     @Select("select * from book where publisher like concat('%',#{message},'%')")
     List<SearchBookResultVO> searchBookByPublisher(String message);
+     @Select("select * from book where author like concat('%',#{message},'%')")
+    List<SearchBookResultVO> searchBookByAuthorSort(String message, Integer basis,);
 }

@@ -19,4 +19,6 @@ public interface UserService {
     Result logout(String token,Claims claims);
 
     Result search(String message, Integer mode,Integer pageNum);
+
+    Result searchSort(String message, Integer mode, Integer basis, Integer sort, Integer pageNum);
 }
