@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.goShopping.mapper.SystemMapper">
+    <select id="searchBook" resultType="com.goShopping.vo.SearchBookResultVO">
+        select * from book where ${mode} like concat('%',#{message},'%')
+        <if test="basis != null and sort != null">
+            ORDER BY ${basis} ${sort}
+        </if>
+    </select>
+
+    <resultMap id="bookCategoryMap" type="com.goShopping.vo.AllCategoryVO">
+        <id property="id" column="id" />
+        <result property="name" column="name" />
+        <collection property="subCategories" select="getCategories" column="id"/>
+    </resultMap>
+
+    <select id="getCategories" parameterType="int" resultMap="bookCategoryMap">
+        SELECT *
+        FROM category
+        WHERE parent = #{id}
+    </select>
+</mapper>
