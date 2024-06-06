@@ -21,4 +21,8 @@ public class SystemController {
     public Result bookDetail(@PathVariable int id){
          return systemService.getBookDetail(id);
     }
+    @GetMapping("/category/all")
+    public Result getCategoryAll(){
+       return systemService.getCategories(0);
+    }
 }

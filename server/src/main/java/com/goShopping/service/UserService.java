@@ -1,5 +1,6 @@
 package com.goShopping.service;
 
+import com.goShopping.dto.SearchDTO;
 import com.goShopping.dto.UserLoginDTO;
 import com.goShopping.dto.UserRegisterDTO;
 import com.goShopping.entity.User;
@@ -18,7 +19,5 @@ public interface UserService {
 
     Result logout(String token,Claims claims);
 
-    Result search(String message, Integer mode,Integer pageNum);
-
-    Result searchSort(String message, Integer mode, Integer basis, Integer sort, Integer pageNum);
+    Result searchSort(SearchDTO searchDTO);
 }

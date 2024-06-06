@@ -5,15 +5,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 @Data
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
-public class RecommendBookVO {
+@AllArgsConstructor
+public class AllCategoryVO {
     private Integer id;
-    private String describe;
-    private String image;
-    private String discount;
-    private Double originalPrice;
-    private Double price;
+    private String name;
+    private List<AllCategoryVO> subCategories;
 }

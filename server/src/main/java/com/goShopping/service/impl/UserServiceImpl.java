@@ -2,8 +2,10 @@ package com.goShopping.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.goShopping.dto.SearchDTO;
 import com.goShopping.dto.UserLoginDTO;
 import com.goShopping.dto.UserRegisterDTO;
+import com.goShopping.entity.BookSearch;
 import com.goShopping.entity.StorageCode;
 import com.goShopping.entity.User;
 import com.goShopping.mapper.SystemMapper;
@@ -15,9 +17,7 @@ import com.goShopping.result.PageSearchResult;
 import com.goShopping.result.Result;
 import com.goShopping.service.UserService;
 import com.goShopping.service.VerifyService;
-import com.goShopping.utils.AesEncryptionUtils;
-import com.goShopping.utils.CodeUtils;
-import com.goShopping.utils.JWTUtils;
+import com.goShopping.utils.*;
 import com.goShopping.vo.RecoverVO;
 import com.goShopping.vo.SearchBookResultVO;
 import io.jsonwebtoken.Claims;
@@ -115,31 +115,17 @@ public class UserServiceImpl implements UserService {
              return Result.success();
     }
 
-    @Override
-    public Result search(String message, Integer mode ,Integer pageNum) {
-             PageHelper.startPage(pageNum,pageProperties.getPageSize());
-             Page<SearchBookResultVO> result = null;
-             if(mode == 1){
-                 result =(Page<SearchBookResultVO>) systemMapper.searchBookByAuthor(message);
-             }else if(mode == 2){
-                 result  = (Page<SearchBookResultVO>) systemMapper.searchBookByName(message);
-             }else{
-                  result = (Page<SearchBookResultVO>) systemMapper.searchBookByPublisher(message);
-             }
-             return Result.success(PageSearchResult.builder().books(result.getResult()).total(result.getTotal()).build());
-    }
 
     @Override
-    public Result searchSort(String message, Integer mode, Integer basis, Integer sort, Integer pageNum) {
-        PageHelper.startPage(pageNum,pageProperties.getPageSize());
-        Page<SearchBookResultVO> result = null;
-        if(mode == 1){
-            result = (Page<SearchBookResultVO>)systemMapper.searchBookByAuthorSort(message,basis,sort);
-        }else if(mode == 2){
-            result  =
-        }else{
-            result =
-        }
-        return Result.success();
+    public Result searchSort(SearchDTO searchDTO) {
+        PageHelper.startPage(searchDTO.getPageNum(),pageProperties.getPageSize());
+        BookSearch bookSearch = BookSearch.builder().sort(SortUtil.getSort().get(searchDTO.getSort()))
+                .basis(BasisUtil.getBasis().get(searchDTO.getBasis()))
+                .mode(ModeUtil.getSearchMode().get(searchDTO.getMode()))
+                .message(searchDTO.getMessage())
+                .pageNum(searchDTO.getPageNum()).build();
+        Page<SearchBookResultVO> result = systemMapper.searchBook(bookSearch);;
+
+        return Result.success(PageSearchResult.builder().books(result.getResult()).total(result.getTotal()).build());
     }
 }

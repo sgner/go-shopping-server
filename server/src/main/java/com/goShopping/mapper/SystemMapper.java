@@ -1,6 +1,8 @@
 package com.goShopping.mapper;
 
+import com.github.pagehelper.Page;
 import com.goShopping.entity.Book;
+import com.goShopping.entity.BookSearch;
 import com.goShopping.vo.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -22,12 +24,7 @@ public interface SystemMapper {
     ArrayList<MessageVO> getMessage(int id);
     @Select("select * from content where message_id =#{messageId}")
     ArrayList<ContentVO> getContent(int messageId);
-    @Select("select image, name, author, published_date, publisher, price, discount, original_price, detail from book where name like concat('%',#{message},'%') ")
-    List<SearchBookResultVO> searchBookByName(String message);
-    @Select("select * from book where author like concat('%',#{message},'%')")
-    List<SearchBookResultVO> searchBookByAuthor(String message);
-    @Select("select * from book where publisher like concat('%',#{message},'%')")
-    List<SearchBookResultVO> searchBookByPublisher(String message);
-     @Select("select * from book where author like concat('%',#{message},'%')")
-    List<SearchBookResultVO> searchBookByAuthorSort(String message, Integer basis,);
+    Page<SearchBookResultVO> searchBook(BookSearch bookSearch);
+
+    List<AllCategoryVO> getCategories(Integer id);
 }

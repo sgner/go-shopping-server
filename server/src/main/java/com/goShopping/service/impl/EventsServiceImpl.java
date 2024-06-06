@@ -5,7 +5,7 @@ import com.goShopping.result.Result;
 import com.goShopping.service.EventsService;
 import com.goShopping.vo.LongTermEventBookBodyItemVO;
 import com.goShopping.vo.LongTermEventBookHeadItemVO;
-import com.goShopping.vo.NewArrivalSpecialVO;
+import com.goShopping.vo.LongTermEventVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,7 +29,7 @@ public class EventsServiceImpl implements EventsService {
             BeanUtils.copyProperties(longTermEventBookHeadItem.get(i),longTermEventBookBodyItem);
             list.add(longTermEventBookBodyItem);
         }
-        NewArrivalSpecialVO result = NewArrivalSpecialVO.builder().head(longTermEventBookHeadItem.get(0)).body(list).build();
+        LongTermEventVO result = LongTermEventVO.builder().head(longTermEventBookHeadItem.get(0)).body(list).build();
         return Result.success(result);
     }
 }

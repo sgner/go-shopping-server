@@ -1,5 +1,6 @@
 package com.goShopping.controller;
 
+import com.goShopping.dto.SearchDTO;
 import com.goShopping.dto.UserLoginDTO;
 import com.goShopping.dto.UserRegisterDTO;
 import com.goShopping.properties.JWTProperties;
@@ -65,12 +66,8 @@ public class UserController  {
             }
             return userService.logout(token,claims);
       }
-      @GetMapping("/search/{mode}/{pageNum}")
-      public Result search(@RequestParam String message, @PathVariable Integer mode,@PathVariable Integer pageNum){
-             return userService.search(message,mode,pageNum);
-      }
-      @GetMapping("/search/{mode}/{basis}/{sort}/{pageNum}")
-      public Result search(@RequestParam String message,@PathVariable Integer mode, @PathVariable Integer basis,@PathVariable Integer sort,@PathVariable Integer pageNum){
-            return userService.searchSort(message,mode,basis,sort,pageNum);
+      @PostMapping("/search")
+      public Result search(@RequestBody SearchDTO searchDTO){
+             return userService.searchSort(searchDTO);
       }
 }

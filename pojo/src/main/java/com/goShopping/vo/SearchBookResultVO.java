@@ -11,6 +11,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SearchBookResultVO {
+    private Integer id;
     private String image;
     private String name;
     private String author;

@@ -9,4 +9,6 @@ public interface SystemService {
     Result recommend(int pageNum);
 
     Result getBookDetail(int id);
+
+    Result getCategories(Integer id);
 }

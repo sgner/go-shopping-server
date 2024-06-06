@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class SystemServiceImpl implements SystemService {
@@ -48,4 +49,12 @@ SystemMapper systemMapper;
         BeanUtils.copyProperties(book,bookDetail);
         return Result.success(bookDetail);
     }
+
+    @Override
+    public Result getCategories(Integer id) {
+          List<AllCategoryVO>categories =  systemMapper.getCategories(id);
+          return Result.success(categories);
+    }
+
+
 }
